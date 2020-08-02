@@ -1,0 +1,25 @@
+.table-header{
+    background-color: #EF6537;
+    color : #fff;
+    font-size: 14px;
+}
+
+.table-body{
+    background-color: #F6F6EF;
+   button{
+        background-color: transparent;
+
+        border: none;
+       
+    }
+    span{
+        color : #9A9A9A !important;
+        a{
+            color : #9A9A9A !important
+        }
+        p{
+            display: inherit;
+            color: black;
+        }
+    }
+}

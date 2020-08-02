@@ -1,0 +1,33 @@
+<table class="table">
+    <thead class="table-header">
+      <tr>
+        <th scope="col">Comments</th>
+        <th scope="col">Vote count</th>
+        <th scope="col">Upvote</th>
+        <th scope="col">News Details</th>
+      </tr>
+    </thead>
+    <tbody class="table-body">
+    <ng-container *ngFor="let post of newsPost">
+        <tr>
+            <!-- <th scope="row">1</th> -->
+            <td>{{post.num_comments}}</td>
+            <td>{{post.points}}</td>
+            <td><button>
+                <span class="fa fa-caret-up" aria-hidden="true"></span>
+            </button></td>
+            <td>
+            {{post.title}}
+            <span class="link"><a [href]="post.url">
+             {{ '('+ post.shortUrl+ ')'}} by 
+            </a>
+            <p>{{post.author}}</p>
+            {{diff_hours(post.created_at)}} hours ago 
+            <a>[hide]</a>
+           </span>
+            </td>
+          </tr>
+    </ng-container>
+    </tbody>
+  </table>
+  
