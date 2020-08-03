@@ -1,13 +1,13 @@
-var path = require('path');
-var express = require('express');
-var app = express();
+const path = require('path');
+const express = require('express');
+const app = express();
 
-var htmlPath = path.join(__dirname, 'dist/hacker-news-clone');
+const htmlPath = path.join(__dirname, 'dist/hacker-news-clone');
 
 app.use(express.static(htmlPath));
 
-var server = app.listen(process.port || 3000, function () {
-    var host = 'localhost';
-    var port = server.address().port;
+const server = app.listen(process.env.port || 3000, function () {
+    const host = 'localhost';
+    const port = server.address().port;
     console.log('listening on http://'+host+':'+port+'/');
 });
