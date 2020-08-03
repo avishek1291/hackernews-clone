@@ -27,7 +27,15 @@ jobs:
         npx jest home.component.spec.ts
       env:
         CI: true
-      
+    - name: clean cache
+      run: |
+        rm -rf dist
     - name: npm build
       run: |
         npx ng build --prod
+    - name: Add remote origin
+      run: |
+        git remote add heroku https://heroku:${{ secrets.Heroku_API_Key }}@git.heroku.com/${{ secrets.Heroku_APP_Name }}.git
+    - name: Deploy to Heroku
+      run: |
+        git push heroku HEAD:master -f
