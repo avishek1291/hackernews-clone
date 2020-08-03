@@ -19,7 +19,9 @@ export class HomeComponent implements OnInit, OnChanges{
   ngOnInit(){
   }
   ngOnChanges(){
-  console.log('news posts', this.newsPost);
+  if (this.newsPost){
+    localStorage.setItem('posts', JSON.stringify(this.newsPost));
+  }
  }
 
  diff_hours(dt1)
