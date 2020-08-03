@@ -30,4 +30,4 @@ jobs:
       
     - name: npm build
       run: |
-        ng build --prod
+        npx ng build --prod
