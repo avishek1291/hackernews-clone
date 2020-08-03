@@ -16,15 +16,15 @@ jobs:
               uses: actions/setup-node@v1
               with:
                     node-version: ${{ matrix.node-version }}
-            - name: npm install
-                run: |
-                npm install
-            - name: test
-                run: |
-                npx jest home.component.spec.ts
-            - name: clean dist
-                run: |
-                rm -rf dist
-            - name: angular build
-                run: |
-                ng build --prod
+                    - name: npm install
+                    run: |
+                      npm install
+                  - name: npm test
+                    run: |
+                      npx test home.component.spec.ts
+                    env:
+                      CI: true
+                    
+                  - name: angular build
+                    run: |
+                      ng build --prod
