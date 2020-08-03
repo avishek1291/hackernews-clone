@@ -1,4 +1,4 @@
-name: Angular-CI
+name: Node-CI
 on:
   push:
     branches:    
@@ -7,24 +7,27 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     strategy:
-        matrix:
-          node-version: [10.x, 8.x]
-          steps:
-            - uses: actions/checkout@v1
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v1
-              with:
-                    node-version: ${{ matrix.node-version }}
-                    - name: npm install
-                    run: |
-                      npm install
-                  - name: npm test
-                    run: |
-                      npx test home.component.spec.ts
-                    env:
-                      CI: true
-                    
-                  - name: angular build
-                    run: |
-                      ng build --prod
+      matrix:
+        node-version: [10.x, 8.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: npm install
+      run: |
+        npm install
+    - name: test
+      run: |
+        npx jest home.component.spec.ts
+      env:
+        CI: true
+      
+    - name: npm build
+      run: |
+        ng build --prod
