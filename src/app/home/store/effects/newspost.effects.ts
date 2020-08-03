@@ -1,7 +1,7 @@
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import { catchError, map, mergeMap } from 'rxjs/operators';
+import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
 import { HackerNewsService } from '../../services/hacker-news.service';
 import * as newsPostActions from '../actions/newspost.action';
 import { Injectable } from '@angular/core';
@@ -13,37 +13,52 @@ export class NewsPostEffects {
     GetNewsPosts$: Observable<Action> = createEffect(() =>
     this.action$.pipe(
       ofType(newsPostActions.getNewsPosts),
-      mergeMap(action =>
-        this.newsPostService.getLatestPost()
-          .pipe(
-            map((data: any) => {
-              return newsPostActions.getNewsPostsSuccess({ response: data });
-            }),
-            catchError((error: Error) => {
-              return of(newsPostActions.getNewsPostsFailure({error}));
-            })
-          )
-      )
-    )
-  );
+      map((action) => action),
+      switchMap((payload) => {
+        return this.newsPostService.getLatestPost().pipe(
+          mergeMap((response: any) => [
+            newsPostActions.getNewsPostsSuccess({response}),
+          ]),
+          catchError((error) => {
+            return of(newsPostActions.getNewsPostsFailure({error}));
+          })
+        );
+      })
+  )
+    );
 
 
   HidePost$: Observable<Action> = createEffect(() =>
     this.action$.pipe(
       ofType(newsPostActions.hidePost),
-      mergeMap(action =>
-        this.newsPostService.getLatestPost()
-          .pipe(
-            map((data: any) => {
-              return newsPostActions.getNewsPostsSuccess({ response: data });
-            }),
-            catchError((error: Error) => {
-              return of(newsPostActions.getNewsPostsFailure({error}));
-            })
-          )
-      )
-    )
-  );
+      map((action) => action),
+      switchMap(({Id}) => {
+        return this.newsPostService.hidePost(Id).pipe(
+          mergeMap((response: any) => [
+            newsPostActions.hidePostSuccess({response}),
+          ]),
+          catchError((error) => {
+            return of(newsPostActions.getNewsPostsFailure({error}));
+          })
+        );
+      })
+  ));
+
+  UpvotePost$: Observable<Action> = createEffect(() =>
+    this.action$.pipe(
+      ofType(newsPostActions.upVotePost),
+      map((action) => action),
+      switchMap(({Id}) => {
+        return this.newsPostService.upVotePost(Id).pipe(
+          mergeMap((response: any) => [
+            newsPostActions.upVotePostSuccess({response}),
+          ]),
+          catchError((error) => {
+            return of(newsPostActions.getNewsPostsFailure({error}));
+          })
+        );
+      })
+  ));
 
 }
 

@@ -9,12 +9,12 @@
     </thead>
     <tbody class="table-body">
     <ng-container *ngFor="let post of newsPost">
-        <tr>
+        <tr [hidden]="post.hideElement">
             <!-- <th scope="row">1</th> -->
             <td>{{post.num_comments}}</td>
             <td>{{post.points}}</td>
-            <td><button>
-                <span class="fa fa-caret-up" aria-hidden="true"></span>
+            <td><button (click)="upVote(post.objectID)">
+                <span class="fa fa-caret-up"></span>
             </button></td>
             <td>
             {{post.title}}
@@ -23,7 +23,7 @@
             </a>
             <p>{{post.author}}</p>
             {{diff_hours(post.created_at)}} hours ago 
-            <a>[hide]</a>
+            <a (click)="hidePost(post.objectID)"> [hide]</a>
            </span>
             </td>
           </tr>

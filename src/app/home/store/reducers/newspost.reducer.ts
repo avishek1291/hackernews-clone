@@ -13,11 +13,25 @@ on(NewsPostActions.getNewsPostsSuccess, (state: any, action) => {
        newsPost: action.response ? formatData(action.response) : [],
        chartData: action.response ? formatChartData(action.response) : []
    };
-})
+}),
+on(NewsPostActions.hidePostSuccess, (state: any, action) => {
+    return{
+        ...state,
+        newsPost: action.response,
+        chartData: action.response ? formatChartData(action.response) : []
+    };
+ }),
+ on(NewsPostActions.upVotePostSuccess, (state: any, action) => {
+    return{
+        ...state,
+        newsPost: action.response ? formatData(action.response) : [],
+        chartData: action.response ? formatChartData(action.response) : []
+    };
+ })
 );
 
 function formatChartData(list: Array<any>){
-    return list.map(el => {
+    return list.filter(el => !el.hideElement).map(el => {
         return{
             // tslint:disable-next-line:radix
             x: parseInt(el.objectID),
@@ -29,7 +43,7 @@ function formatData(list: Array<any>){
     return list.map(el => {
         return {
             ...el,
-            shortUrl: extractUrl(el.url)
+            shortUrl: extractUrl(el.url ? el.url : '')
         };
     });
 }

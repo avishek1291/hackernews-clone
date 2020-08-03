@@ -20,7 +20,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     HttpClientModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot(),
-    StoreDevtoolsModule.instrument()
+   // StoreDevtoolsModule.instrument()
   ],
   providers: [],
   bootstrap: [AppComponent]

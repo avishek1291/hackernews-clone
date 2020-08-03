@@ -16,10 +16,7 @@ export class HomeContainerComponent implements OnInit {
   chartData$: Observable<any>;
   Id: any;
   lineChartData: any;
-  constructor(
-    private state: State<any>,
-    private store: Store
-  ) {}
+  constructor(private state: State<any>, private store: Store) {}
 
   ngOnInit() {
     this.store.dispatch(NewsPostActions.getNewsPosts());
@@ -27,14 +24,20 @@ export class HomeContainerComponent implements OnInit {
     this.newsListPosts$ = this.state.pipe(select(NewsSelector.getNewsPosts));
 
     this.chartData$ = this.state.pipe(select(NewsSelector.getChartData));
-    this.chartData$.subscribe(res => {
-      if (res){
+    this.chartData$.subscribe((res) => {
+      if (res) {
         this.lineChartData = res;
       }
     });
   }
 
-  hidePost(Id){
-    // this.store.dispatch(NewsPostActions.hidePost({Id}));
+  hidePost(Id) {
+    console.log('hide at shell', Id);
+    this.store.dispatch(NewsPostActions.hidePost({ Id }));
+  }
+
+  upVote(Id) {
+    console.log('upvote at shell', Id);
+    this.store.dispatch(NewsPostActions.upVotePost({ Id }));
   }
 }

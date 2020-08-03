@@ -1,5 +1,5 @@
-import { Component, ViewEncapsulation, OnInit, Input, OnChanges } from '@angular/core';
-import { EventEmitter } from 'protractor';
+import { Component, ViewEncapsulation, OnInit, Input, OnChanges, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +9,11 @@ import { EventEmitter } from 'protractor';
 export class HomeComponent implements OnInit, OnChanges{
   @Input() newsPost: any;
   title = 'hacker-news-clone';
-  hidePostClicked: EventEmitter =  new EventEmitter();
+  @Output()
+  hidePostClicked: EventEmitter<any> =  new EventEmitter();
+
+  @Output()
+  upVotePostClicked: EventEmitter<any> =  new EventEmitter();
   constructor() {}
 
   ngOnInit(){
@@ -27,6 +31,12 @@ export class HomeComponent implements OnInit, OnChanges{
  }
 
  hidePost(Id){
-  // this.hidePostClicked.emit(Id);
+  console.log('hide post clicked');
+  this.hidePostClicked.emit(Id);
+ }
+
+ upVote(Id){
+console.log('upvote clicked');
+this.upVotePostClicked.emit(Id);
  }
 }
