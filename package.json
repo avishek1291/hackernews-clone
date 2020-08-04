@@ -2,11 +2,14 @@
   "name": "hacker-news-clone",
   "version": "0.0.0",
   "scripts": {
-    "start": "node server.js",
     "ng": "ng",
+    "build": "ng build --prod",
     "test": "npx jest",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "heroku-prebuild": "rm -rf dist",
+    "heroku-postbuild": "node server.js",
+    "heroku-cleanup": "echo This runs after Heroku prunes and caches dependencies."
   },
   "private": true,
   "dependencies": {
