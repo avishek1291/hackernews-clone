@@ -3,15 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "npx jest",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dev:ssr": "ng run hacker-news-clone:serve-ssr",
-    "serve:ssr": "node dist/hacker-news-clone/server/main.js",
-    "build:ssr": "ng build --prod && ng run hacker-news-clone:server:production",
-    "prerender": "ng run hacker-news-clone:prerender"
+    "heroku-prebuild": "rm -rf dist",
+    "heroku-postbuild": "node server.js"
   },
   "private": true,
   "dependencies": {
