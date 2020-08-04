@@ -27,9 +27,6 @@ jobs:
         npx jest home.component.spec.ts
       env:
         CI: true
-    - name: clean cache
-      run: |
-        rm -rf dist
     - name: npm build
       run: |
         npx ng build --prod
