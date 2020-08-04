@@ -33,6 +33,7 @@ Hacker news clone with following features:
 1.Upvote
 2.Line chart for comments/Points
 3.Hide post
+5.Installation as PWA chrome app
 
 ## Tech Stack used
 Store management: NGRX
@@ -40,6 +41,7 @@ Responsive: Bootstrap
 CI/CD -- github action 
 Unit testing: Jest
 Chart: canvas js
+PWA: Default Angular configuration
 
 Server side rendering: Express
 
