@@ -9,6 +9,8 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/app.state';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent
@@ -20,6 +22,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     HttpClientModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
    // StoreDevtoolsModule.instrument()
   ],
   providers: [],
