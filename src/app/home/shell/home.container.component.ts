@@ -43,9 +43,11 @@ export class HomeContainerComponent implements OnInit {
 
   previousPageClicked(pageCount){
     this.store.dispatch(NewsPostActions.getNewsPosts({pageNum: pageCount}));
+    localStorage.set('pageCount', JSON.stringify(pageCount));
   }
 
   nexPageClick(pageCount){
     this.store.dispatch(NewsPostActions.getNewsPosts({pageNum: pageCount}));
+    localStorage.set('pageCount', JSON.stringify(pageCount));
   }
 }
