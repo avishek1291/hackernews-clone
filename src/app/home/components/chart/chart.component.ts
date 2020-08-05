@@ -22,12 +22,13 @@ export class ChartComponent implements OnInit, OnChanges {
         lineColor: '#CFCEC8',
       },
       axisX: {
-        gridColor: '#CFCEC8' ,
+        gridColor: '#CFCEC8',
         title: 'Id',
         lineColor: '#CFCEC8',
       },
       data: [
-        { indexLabelFontColor: '#CFCEC8',
+        {
+          indexLabelFontColor: '#CFCEC8',
           type: 'line',
           dataPoints: this.chartData,
         },
@@ -35,6 +36,4 @@ export class ChartComponent implements OnInit, OnChanges {
     });
     chart.render();
   }
-
-  renderChart() {}
 }
