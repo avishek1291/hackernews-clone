@@ -19,7 +19,7 @@ export class HomeContainerComponent implements OnInit {
   constructor(private state: State<any>, private store: Store) {}
 
   ngOnInit() {
-    this.store.dispatch(NewsPostActions.getNewsPosts());
+    this.store.dispatch(NewsPostActions.getNewsPosts({pageNum: 1}));
 
     this.newsListPosts$ = this.state.pipe(select(NewsSelector.getNewsPosts));
 
@@ -39,5 +39,13 @@ export class HomeContainerComponent implements OnInit {
   upVote(Id) {
     console.log('upvote at shell', Id);
     this.store.dispatch(NewsPostActions.upVotePost({ Id }));
+  }
+
+  previousPageClicked(pageCount){
+    this.store.dispatch(NewsPostActions.getNewsPosts({pageNum: pageCount}));
+  }
+
+  nexPageClick(pageCount){
+    this.store.dispatch(NewsPostActions.getNewsPosts({pageNum: pageCount}));
   }
 }

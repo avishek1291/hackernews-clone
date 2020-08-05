@@ -23,8 +23,25 @@
             color: black;
         }
     }
+    .pagination{
+        display: flex;
+        button: {
+            border: none !important;
+        }
+    }
 }
 table{
     margin-bottom: 0rem !important;
     border-bottom: 4px solid #EF6537;
+   
 }
+nav{
+    background-color: #F6F6EF;
+    ul{
+        margin-block-end: 0rem;
+    }
+}
+   
+
+
+

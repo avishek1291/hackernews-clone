@@ -1,3 +1,8 @@
-<app-home [newsPost] = "newsListPosts$|async" (hidePostClicked)="hidePost($event)" (upVotePostClicked)="upVote($event)"></app-home>
+<app-home [newsPost] = "newsListPosts$|async" 
+(hidePostClicked)="hidePost($event)" 
+(upVotePostClicked)="upVote($event)"
+(nextPage)="nexPageClick($event)"
+(previousPage)="previousPageClicked($event)"
+></app-home>
 
 <app-chart [chartData]="lineChartData"></app-chart>

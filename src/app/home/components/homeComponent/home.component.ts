@@ -11,9 +11,14 @@ export class HomeComponent implements OnInit, OnChanges{
   title = 'hacker-news-clone';
   @Output()
   hidePostClicked: EventEmitter<any> =  new EventEmitter();
-
+  @Output()
+  nextPage: EventEmitter<any> =  new EventEmitter();
+  @Output()
+  previousPage: EventEmitter<any> =  new EventEmitter();
   @Output()
   upVotePostClicked: EventEmitter<any> =  new EventEmitter();
+
+  count = 1;
   constructor() {}
 
   ngOnInit(){
@@ -40,5 +45,15 @@ export class HomeComponent implements OnInit, OnChanges{
  upVote(Id){
 console.log('upvote clicked');
 this.upVotePostClicked.emit(Id);
+ }
+
+ nextCliked(){
+   this.nextPage.emit(this.count + 1);
+   this.count = this.count + 1;
+ }
+
+ previousClicked() {
+   this.previousPage.emit(this.count - 1);
+   this.count = this.count - 1 ;
  }
 }

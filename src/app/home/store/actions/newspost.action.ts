@@ -2,7 +2,8 @@ import { createAction , props} from '@ngrx/store';
 
 
 export const getNewsPosts =  createAction(
-    '[news-posts] Get news posts'
+    '[news-posts] Get news posts',
+    props<{pageNum: any}>()
 );
 
 export const getNewsPostsSuccess =  createAction(

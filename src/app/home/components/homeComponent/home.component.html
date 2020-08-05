@@ -30,5 +30,20 @@
           </tr>
     </ng-container>
     </tbody>
+  
   </table>
+  <div>
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-end">
+        <li class="page-item" [ngClass]="count===1?'disabled': ''">
+          <a class="page-link" tabindex="-1" (click)="previousClicked()">Previous</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" (click)="nextCliked()">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </div>
+  
+  

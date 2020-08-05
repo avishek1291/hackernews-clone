@@ -15,7 +15,7 @@ export class NewsPostEffects {
       ofType(newsPostActions.getNewsPosts),
       map((action) => action),
       switchMap((payload) => {
-        return this.newsPostService.getLatestPost().pipe(
+        return this.newsPostService.getLatestPost(payload.pageNum).pipe(
           mergeMap((response: any) => [
             newsPostActions.getNewsPostsSuccess({response}),
           ]),
