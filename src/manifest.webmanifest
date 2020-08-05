@@ -1,7 +1,7 @@
 {
   "name": "hacker-news-clone",
   "short_name": "hacker-news-clone",
-  "theme_color": "#1976d2",
+  "theme_color": "#EF6537",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
