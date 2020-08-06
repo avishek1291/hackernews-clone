@@ -14,14 +14,18 @@ export class HomeContainerComponent implements OnInit {
   newsList: any;
   newsListPosts$: Observable<any>;
   chartData$: Observable<any>;
+  loaderStatus$: Observable<any>;
   Id: any;
   lineChartData: any;
   constructor(private state: State<any>, private store: Store) {}
 
   ngOnInit() {
-    this.store.dispatch(NewsPostActions.getNewsPosts({pageNum: 1}));
+    this.store.dispatch(NewsPostActions.getNewsPosts({  pageNum: 0}));
+    this.store.dispatch(NewsPostActions.showLoader({show: true}));
 
     this.newsListPosts$ = this.state.pipe(select(NewsSelector.getNewsPosts));
+
+    this.loaderStatus$ = this.state.pipe(select(NewsSelector.loaderSatus));
 
     this.chartData$ = this.state.pipe(select(NewsSelector.getChartData));
     this.chartData$.subscribe((res) => {
@@ -44,10 +48,13 @@ export class HomeContainerComponent implements OnInit {
   previousPageClicked(pageCount){
     this.store.dispatch(NewsPostActions.getNewsPosts({pageNum: pageCount}));
     localStorage.set('pageCount', JSON.stringify(pageCount));
+    this.store.dispatch(NewsPostActions.showLoader({show: true}));
+
   }
 
   nexPageClick(pageCount){
     this.store.dispatch(NewsPostActions.getNewsPosts({pageNum: pageCount}));
     localStorage.set('pageCount', JSON.stringify(pageCount));
+    this.store.dispatch(NewsPostActions.showLoader({show: true}));
   }
 }

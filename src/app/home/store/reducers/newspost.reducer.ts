@@ -2,7 +2,8 @@ import { createReducer, on, Action } from '@ngrx/store';
 import * as NewsPostActions from '../actions/newspost.action';
 import { State } from '@ngrx/store';
 const initialState = {
-    newsPost: []
+    newsPost: [],
+    showLoader: false
 };
 export const NewsPostFeatureKey =  'homeModuleStore';
 
@@ -11,14 +12,15 @@ on(NewsPostActions.getNewsPostsSuccess, (state: any, action) => {
    return{
        ...state,
        newsPost: action.response ? formatData(action.response) : [],
-       chartData: action.response ? formatChartData(action.response) : []
+       chartData: action.response ? formatChartData(action.response) : [],
+       showLoader: false
    };
 }),
 on(NewsPostActions.hidePostSuccess, (state: any, action) => {
     return{
         ...state,
         newsPost: action.response,
-        chartData: action.response ? formatChartData(action.response) : []
+        chartData: action.response ? formatChartData(action.response) : [],
     };
  }),
  on(NewsPostActions.upVotePostSuccess, (state: any, action) => {
@@ -26,6 +28,12 @@ on(NewsPostActions.hidePostSuccess, (state: any, action) => {
         ...state,
         newsPost: action.response ? formatData(action.response) : [],
         chartData: action.response ? formatChartData(action.response) : []
+    };
+ }),
+ on(NewsPostActions.showLoader, (state: any, action) => {
+    return{
+        ...state,
+       showLoader: true
     };
  })
 );

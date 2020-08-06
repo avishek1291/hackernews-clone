@@ -1,8 +1,11 @@
-<app-home [newsPost] = "newsListPosts$|async" 
-(hidePostClicked)="hidePost($event)" 
-(upVotePostClicked)="upVote($event)"
-(nextPage)="nexPageClick($event)"
-(previousPage)="previousPageClicked($event)"
-></app-home>
-
-<app-chart [chartData]="lineChartData"></app-chart>
+<div class="wrapper">
+    <app-home [newsPost] = "newsListPosts$|async" 
+    (hidePostClicked)="hidePost($event)" 
+    (upVotePostClicked)="upVote($event)"
+    (nextPage)="nexPageClick($event)"
+    (previousPage)="previousPageClicked($event)"
+    ></app-home>
+    
+    <app-chart [chartData]="lineChartData"></app-chart>
+    <app-loader [showLoaderImage]="loaderStatus$|async"></app-loader>
+</div>

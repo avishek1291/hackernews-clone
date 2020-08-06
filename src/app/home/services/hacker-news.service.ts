@@ -9,7 +9,7 @@ import { of } from 'rxjs';
 export class HackerNewsService {
   constructor(private httpService: HttpClient) {}
   // https://hn.algolia.com/api/v1/search?page=1&hitsPerPage=10
-  getLatestPost(page = 1) {
+  getLatestPost(page = 0) {
       return this.httpService
       .get(`${environment.baseApi}?page=${page}&hitsPerPage=20`)
       .pipe(map((events: any) => events.hits));

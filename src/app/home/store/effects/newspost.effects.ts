@@ -5,16 +5,18 @@ import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
 import { HackerNewsService } from '../../services/hacker-news.service';
 import * as newsPostActions from '../actions/newspost.action';
 import { Injectable } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Injectable()
 export class NewsPostEffects {
 
-    constructor(private action$: Actions, private newsPostService: HackerNewsService){}
+    constructor(private action$: Actions, private newsPostService: HackerNewsService, private spinnerService: NgxSpinnerService){}
 
     GetNewsPosts$: Observable<Action> = createEffect(() =>
     this.action$.pipe(
       ofType(newsPostActions.getNewsPosts),
       map((action) => action),
       switchMap((payload) => {
+        this.spinnerService.show();
         return this.newsPostService.getLatestPost(payload.pageNum).pipe(
           mergeMap((response: any) => [
             newsPostActions.getNewsPostsSuccess({response}),

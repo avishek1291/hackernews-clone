@@ -34,3 +34,8 @@ export const getNewsPostsFailure =  createAction(
     '[news-posts-failure] Get news posts',
     props<{error: any}>()
 );
+
+export const showLoader =  createAction(
+    '[news-posts-loader] Show loader',
+    props<{show: boolean}>()
+);

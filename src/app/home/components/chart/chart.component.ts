@@ -20,6 +20,7 @@ export class ChartComponent implements OnInit, OnChanges {
         title: 'Votes',
         gridColor: '#CFCEC8',
         lineColor: '#CFCEC8',
+
       },
       axisX: {
         gridColor: '#CFCEC8',

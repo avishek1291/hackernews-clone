@@ -1,4 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 body{
+  
    padding:  8px 64px 0px 64px;
+
+ 
 }
+@media only screen and (max-width: 600px) {
+   body {
+    padding: 0px;
+    font-size: 10px;
+   }
+ }
