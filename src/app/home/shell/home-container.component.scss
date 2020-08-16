@@ -1,76 +1,85 @@
-.wrapper{
-    overflow-x: hidden;
-    .post-wrapper{
-        overflow-x: scroll;
-    }
-}
-#chartContainer{
-    overflow-x: hidden;
-}
-.table-header{
-    background-color: #EF6537;
-    color : #fff;
-    font-size: 14px;
-}
-
-.table-body{
-    background-color: #F6F6EF;
-   button{
-        background-color: transparent;
-
-        border: none;
-       
+.wrapper {
+  overflow-x: hidden;
+  .post-wrapper {
+    overflow-x: scroll;
+  }
+  .nav-top {
+    background-color: #ef6537;
+    a {
+      border: 1px solid white;
+      color: white;
+      width: 34px;
+      text-align: center;
     }
     span{
-        color : #9A9A9A !important;
-        a{
-            color : #9A9A9A !important;
-            cursor: pointer;
-        }
-        p{
-            display: inherit;
-            color: black;
-        }
+        font-size: 16px;
+        font-weight: bold;
     }
-    tr:nth-child(even){
-        background-color: #E5E4DD;
-    }
+  }
 }
-.pagination{
-    display: flex;
-    button: {
-        border: none !important;
-    }
-    .page-item{
-        .page-link{
-            color: #EF6537;
-            border:none;
-            cursor: pointer;
-            background-color: inherit;
-        }
-        .page-link{
-            color: 9A9A9A
-        }
-    }
+#chartContainer {
+  overflow-x: hidden;
 }
-table{
-    margin-bottom: 0rem !important;
-    border-bottom: 4px solid #EF6537;
-   
+.table-header {
+  background-color: #c6c3b6;
+  color: black;
+  font-size: 14px;
 }
-nav{
-    background-color: #F6F6EF;
-    ul{
-        margin-block-end: 0rem;
+
+.table-body {
+  background-color: #f6f6ef;
+  button {
+    background-color: transparent;
+
+    border: none;
+  }
+  span {
+    color: #9a9a9a !important;
+    a {
+      color: #9a9a9a !important;
+      cursor: pointer;
     }
+    p {
+      display: inherit;
+      color: black;
+    }
+  }
+  tr:nth-child(even) {
+    background-color: #e5e4dd;
+  }
+}
+.pagination {
+  display: flex;
+  button: {
+    border: none !important;
+  }
+  .page-item {
+    .page-link {
+      color: #ef6537;
+      border: none;
+      cursor: pointer;
+      background-color: inherit;
+    }
+    .page-link {
+      color: 9a9a9a;
+    }
+  }
+}
+table {
+  margin-bottom: 0rem !important;
+  border-bottom: 4px solid #ef6537;
+}
+nav {
+  background-color: #f6f6ef;
+  ul {
+    margin-block-end: 0rem;
+  }
 }
 @media only screen and (max-width: 600px) {
-    table {
+  table {
     font-size: 10px;
-    }
   }
-  .disabled{
-      color: #9A9A9A;
-  }
-
-
+}
+.disabled {
+  color: #9a9a9a;
+}
