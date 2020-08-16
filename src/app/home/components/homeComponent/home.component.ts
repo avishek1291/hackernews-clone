@@ -31,10 +31,16 @@ export class HomeComponent implements OnInit, OnChanges{
 
  diff_hours(dt1)
  {
-
-  let  diff = (new Date().getTime() - new Date(dt1).getTime()) / 1000;
-  diff /= (60 * 60);
-  return Math.abs(Math.round(diff));
+  const yearDiff =  new Date().getFullYear() - new Date(dt1).getFullYear();
+  const monthDiff =  new Date().getMonth() - new Date(dt1).getMonth();
+  const dayDiff =  new Date().getDate() -  new Date(dt1).getDate();
+  if (yearDiff > 1){
+    return `${yearDiff} years ago`;
+  }else if (monthDiff > 1){
+    return `${monthDiff} months ago`;
+  }else if (dayDiff > 1){
+      return `${dayDiff} days ago`;
+  }
  }
 
  hidePost(Id){
